@@ -46,6 +46,7 @@ text-transform: uppercase;
     display: flex;
     align-items: start;
     justify-content: center;
+    visibility: hidden;
 }
 a{
     color: white;
@@ -55,7 +56,7 @@ a{
 b{
     font-size: 20px;
 }
-#extractButtonButton {
+#extractButton {
     border: 1px solid #1C6EA4;
     border-radius: 12px;
     background-color: white;
@@ -66,7 +67,7 @@ b{
     font-size: 20px;
 }
 
-#extractButtonButton:hover {
+#extractButton:hover {
     background-color: #ffb800;
     color: white;
 }
