@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("extractButton").addEventListener('click', function () {
+    var procentElement = document.querySelector('.procent');
+    console.log(procentElement)
+    procentElement.style.visibility = 'visible';
+
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       // Send a message to the content script to get HTML
       chrome.tabs.sendMessage(tabs[0].id, { action: 'get_html' }, function (response) {
