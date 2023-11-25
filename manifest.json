@@ -1,10 +1,10 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "HTML Extractor",
   "version": "1.0",
   "description": "Extracts HTML from the current tab.",
-  "permissions": ["activeTab"],
-  "browser_action": {
+  "permissions": ["activeTab", "webNavigation"],
+  "action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
@@ -16,5 +16,10 @@
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "background": {
+  "service_worker": "background.js"},
+  "content_security_policy": {
+  "extension_pages": "script-src 'self'; object-src 'self';"
+  }
 }

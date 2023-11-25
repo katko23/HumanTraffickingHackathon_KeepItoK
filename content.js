@@ -1,7 +1,12 @@
-
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if (request.action === 'get_html') {
-    sendResponse({ html: document.documentElement.outerHTML });
-  }
-  return true; // Remove this line
+chrome.webNavigation.onCompleted.addListener(function(details) {
+  chrome.tabs.executeScript(
+    { code: 'document.documentElement.outerHTML' },
+    function(result) {
+      if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError.message);
+      } else {
+        chrome.runtime.sendMessage({ action: 'get_html', html: result[0] });
+      }
+    }
+  );
 });

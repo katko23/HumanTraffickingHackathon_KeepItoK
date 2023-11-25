@@ -4,6 +4,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 import torch
 from sklearn.metrics import accuracy_score
+import parser
 
 # Load pre-trained BERT model and tokenizer
 model_name = 'bert-base-uncased'
@@ -70,6 +71,20 @@ new_messages = [
     "a",
     "any words can be writed now ?"
 ]
+
+# test
+file_path = 'example.txt'  # Replace 'your_file.txt' with the path to your text file
+file_content = ""
+try:
+    with open(file_path, 'r', encoding='utf-8') as file:
+        file_content = file.read()
+        # print(file_content)
+except FileNotFoundError:
+    print(f"The file '{file_path}' was not found.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+new_messages = parser.parsing_telegram(file_content)
+# only testing
 
 # Tokenize and encode the new messages
 new_encodings = tokenizer(new_messages, truncation=True, padding=True, return_tensors='pt')

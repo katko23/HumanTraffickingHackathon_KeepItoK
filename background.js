@@ -1,8 +1,15 @@
-// Handle the click event on the extension icon
-chrome.browserAction.onClicked.addListener(function(tab) {
-  // Send a message to the content script to get the full HTML
-  chrome.tabs.sendMessage(tab.id, { action: 'get_html' }, function(response) {
-    // Process the HTML content here
-    console.log('HTML content:', response.html);
-  });
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.action === 'get_html') {
+    chrome.tabs.executeScript(
+      { code: 'document.documentElement.outerHTML' },
+      function(result) {
+        if (chrome.runtime.lastError) {
+          console.error(chrome.runtime.lastError.message);
+        } else {
+          sendResponse({ html: result[0] });
+        }
+      }
+    );
+    return true;  // Indicates that the response will be sent asynchronously
+  }
 });

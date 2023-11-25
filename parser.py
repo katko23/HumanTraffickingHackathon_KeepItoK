@@ -11,19 +11,24 @@ except FileNotFoundError:
 except Exception as e:
     print(f"An error occurred: {e}")
 
-# Replace the html_string with your actual HTML content
-html_string = file_content
+def parsing_telegram(file_content):
+    # Replace the html_string with your actual HTML content
+    html_string = file_content
 
-# Parse the HTML content
-tree = html.fromstring(html_string)
+    # Parse the HTML content
+    tree = html.fromstring(html_string)
 
-# Define the base XPath expression for the parent div
-base_xpath_expression = '//*[@id="MiddleColumn"]/div[4]/div[2]/div/div[1]/div'
+    # Define the base XPath expression for the parent div
+    base_xpath_expression = '//*[@id="MiddleColumn"]/div[4]/div[2]/div/div[1]/div'
 
-# Extract text content from the parent div and its descendants
-extracted_content = tree.xpath(f'{base_xpath_expression}//text()')
+    # Extract text content from the parent div and its descendants
+    extracted_content = tree.xpath(f'{base_xpath_expression}//text()')
 
-# Print the extracted content
-print("Extracted Content:")
-for content in extracted_content:
-    print(content.strip())
+    # Print the extracted content
+    print("Extracted Content:")
+    for content in extracted_content:
+        print(content.strip())
+
+    return extracted_content
+
+parsing_telegram(file_content)
