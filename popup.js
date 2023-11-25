@@ -17,13 +17,19 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           body: JSON.stringify({ html: response.html }),
         })
-          .then(response => response.json())
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
           .then(data => {
             // Display the JSON response on the popup
             alert(JSON.stringify(data));
           })
           .catch(error => {
             console.error('Error:', error);
+            alert('Error: Could not connect to the Python server.');
           });
       });
     });

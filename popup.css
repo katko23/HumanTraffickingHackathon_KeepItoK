@@ -1,10 +1,64 @@
-h1{
-    font-size: 10px;
+body{
+    background: black;
 }
 
-#parseButton {
-    border-radius: 8px;
+.title{
+    display: flex;
+    align-items: center;
+}
+strong{
+    font-size: 20px;
+   font-family: Impact, Charcoal, sans-serif;
+letter-spacing: 2px;
+word-spacing: 2px;
+color: #ffffff;
+font-weight: 400;
+text-decoration: none solid rgb(68, 68, 68);
+font-style: normal;
+font-variant: normal;
+text-transform: uppercase;
+}
+.link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+}
+.button{
+    width: 400px;
+    height: 100px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+a{
+    color: white;
+    vertical-align: middle;
+    cursor: pointer;
+}
+#extractButtonButton {
+    border: 1px solid #1C6EA4;
+    border-radius: 12px;
     background-color: white;
     color: black;
-    border: 2px solid silver;
+    vertical-align: top;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+#extractButton:hover{
+    background-color: #ffb800;
+    color: white;
+}
+
+small{
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color:#ffb800;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
 }
